@@ -4,3 +4,7 @@ title = 'My New Hugo Site'
 
 
 theme = "poison"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
