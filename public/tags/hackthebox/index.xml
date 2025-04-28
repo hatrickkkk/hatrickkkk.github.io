@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>//localhost:1313/</link>
-    <description>Recent content on </description>
+    <title>Hackthebox on </title>
+    <link>//localhost:1313/tags/hackthebox/</link>
+    <description>Recent content in Hackthebox on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/hackthebox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HackTheBox - Cicada</title>
       <link>//localhost:1313/posts/cicada/</link>
       <pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/cicada/</guid>
       <description>&lt;h1 id=&#34;hackthebox-machine-walkthrough&#34;&gt;HackTheBox Machine Walkthrough&lt;/h1&gt;&#xA;&lt;p&gt;This document provides a structured, detailed walkthrough of the HackTheBox machine, from initial enumeration through privilege escalation to Domain Admin. All commands, outputs, and notes are presented in organized Markdown.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-initial-nmap-enumeration&#34;&gt;1. Initial Nmap Enumeration&lt;/h2&gt;&#xA;&lt;p&gt;Identify open ports and services on the target.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Discover all TCP ports&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nmap -sC -sV -oN nmap_initial.txt 10.10.11.35&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Key findings:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Port&lt;/th&gt;&#xA;          &lt;th&gt;Service&lt;/th&gt;&#xA;          &lt;th&gt;Version&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;22&lt;/td&gt;&#xA;          &lt;td&gt;ssh&lt;/td&gt;&#xA;          &lt;td&gt;OpenSSH 8.x&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;80&lt;/td&gt;&#xA;          &lt;td&gt;http&lt;/td&gt;&#xA;          &lt;td&gt;Apache 2.4.x&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;139&lt;/td&gt;&#xA;          &lt;td&gt;netbios-ssn&lt;/td&gt;&#xA;          &lt;td&gt;Windows netbios-ssn&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;445&lt;/td&gt;&#xA;          &lt;td&gt;microsoft-ds&lt;/td&gt;&#xA;          &lt;td&gt;Windows Server SMB&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;2-smb-anonymous-enumeration&#34;&gt;2. SMB Anonymous Enumeration&lt;/h2&gt;&#xA;&lt;h3 id=&#34;21-check-smb-shares-as-anonymous&#34;&gt;2.1 Check SMB shares as anonymous&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;smbclient -L 10.10.11.35 -N&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;HR&lt;/code&gt; share is accessible.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;22-download-infotxt-from-hr-share&#34;&gt;2.2 Download &lt;code&gt;info.txt&lt;/code&gt; from HR share&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;smbclient &lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;10.10.11.35&lt;span style=&#34;color:#ae81ff&#34;&gt;\H&lt;/span&gt;R -N&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; get info.txt&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Discovery:&lt;/strong&gt; The file contains a password: &lt;code&gt;Welcome@123&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>//localhost:1313/whoami/whoami/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/whoami/whoami/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>

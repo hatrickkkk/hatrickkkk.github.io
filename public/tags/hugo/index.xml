@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on </title>
+    <link>//localhost:1313/tags/hugo/</link>
+    <description>Recent content in Hugo on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Example to demonstrate how to hide the table of contents on a single post</title>
+      <link>//localhost:1313/whoami/whoami/</link>
+      <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/whoami/whoami/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;$ whoami&#xA;patrickhammes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;College – Bachelor’s, Computer Science at UNISINOS.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;certifications-and-courses&#34;&gt;Certifications and Courses&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Linux Professional Institute Certified (LPIC-1)&lt;/li&gt;&#xA;&lt;li&gt;Desec Certified Penetration Tester (DCPT)&lt;/li&gt;&#xA;&lt;li&gt;Ethical Hacking Endpoint Protection (EHEPE)&lt;/li&gt;&#xA;&lt;li&gt;Ethical Hacking Cloud Pentesting (EHCP)&lt;/li&gt;&#xA;&lt;li&gt;Ethical Hacking Active Directory Operations (EHADOP)&lt;/li&gt;&#xA;&lt;li&gt;Secure Coding and DevSecOps (GHSCD)&lt;/li&gt;&#xA;&lt;li&gt;Web Hacking 2.0&lt;/li&gt;&#xA;&lt;li&gt;Cryptography 0x65&lt;/li&gt;&#xA;&lt;li&gt;Offensive Security Certified Professional (OSCP) – In progress&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;talks&#34;&gt;Talks&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Security Summit 2023 at Senior Sistemas&lt;br&gt;&#xA;Keynote, “Cyber Warriors Unite – Exploring the world of CTFs, Pentest and Bug Bounty&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;additional-activities&#34;&gt;Additional Activities&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://app.hackthebox.com/profile/212236&#34; target=&#34;_blank&#34;&gt;CTF Player&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://medium.com/@patrickhammes&#34; target=&#34;_blank&#34;&gt;Medium&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://bugcrowd.com/hatrickkkk&#34; target=&#34;_blank&#34;&gt;Bugcrowd Profile&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;“Security is not a product, but a process.” – Bruce Schneier&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
