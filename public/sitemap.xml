@@ -31,8 +31,6 @@
   </url><url>
     <loc>//localhost:1313/whoami/whoami/</loc>
   </url><url>
-    <loc>//localhost:1313/tags/active-directory-hackthebox/</loc>
-  </url><url>
     <loc>//localhost:1313/whoami/</loc>
   </url>
 </urlset>

