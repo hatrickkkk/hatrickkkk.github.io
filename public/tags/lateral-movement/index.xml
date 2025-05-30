@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lateral Movement on </title>
+    <link>//localhost:1313/tags/lateral-movement/</link>
+    <description>Recent content in Lateral Movement on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/lateral-movement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AD - Lateral Movement Techniques</title>
+      <link>//localhost:1313/posts/lateralmovement/</link>
+      <pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/lateralmovement/</guid>
+      <description>&lt;h1 id=&#34;active-directory---lateral-movement-techniques&#34;&gt;ACTIVE DIRECTORY - Lateral Movement Techniques&lt;/h1&gt;&#xA;&lt;p&gt;Here, we&amp;rsquo;ll take a look at lateral movement techniques in Active Directory envir/onments.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-wmi-and-winrm&#34;&gt;1. WMI and WinRM&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-wmi&#34;&gt;1.1 WMI&lt;/h3&gt;&#xA;&lt;p&gt;Windows Management Instrumentation (WMI) is capable of creating processes via the Create method from the Win32_Process class. It&#xA;communicates through Remote Procedure Calls (RPC)1134 over port 135 for remote access and&#xA;uses a higher-range port (19152-65535) for session data.&lt;/p&gt;&#xA;&lt;p&gt;In order to abuse a remote target via WMI, we need credentaisl of a member of the Administrator local group, which can be also a domain user.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

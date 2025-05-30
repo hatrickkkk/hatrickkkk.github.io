@@ -1,6 +1,6 @@
 ---
 title: "HackTheBox - Cicada"
-date: 2025-04-25
+date: 2025-05-16
 draft: false
 series: "HTB Machines"
 tags: ["active directory", "hackthebox", "windows"]
@@ -17,8 +17,6 @@ Identify open ports and services on the target.
 # Discover some TCP ports
 nmap -sVC -T4 10.10.11.35 -oA nmapScan-out
 ```
-
-
 
 **Key findings:**
 

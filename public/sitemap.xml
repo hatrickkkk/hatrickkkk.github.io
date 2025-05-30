@@ -3,31 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/active-directory/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/hackthebox/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/cicada/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/posts/escapetwo/</loc>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/series/htb-machines/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/posts/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/series/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/windows/</loc>
-    <lastmod>2025-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/forest/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/lateralmovement/</loc>
+    <lastmod>2025-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/cicada/</loc>
+    <lastmod>2025-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/lateral-movement/</loc>
+    <lastmod>2025-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/active/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/blackfield/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/resolute/</loc>
+  </url><url>
+    <loc>//localhost:1313/posts/sauna/</loc>
   </url><url>
     <loc>//localhost:1313/whoami/whoami/</loc>
   </url><url>
