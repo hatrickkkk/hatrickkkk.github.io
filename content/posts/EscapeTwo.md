@@ -120,7 +120,8 @@ Let's try a shell with `ryan` user.
 ### 4.1 BloodHound
 Let's get some information with Bloodhound and analyse it.
 
-```
+```bash
+bloodhound-python -u ryan -p "WqSZAF6CysDQbGb3" -d sequel.htb -ns 10.10.11.51 -c All
 ```
 
 ![bloodhound](/images/escapetwo-bloodhound.png)
